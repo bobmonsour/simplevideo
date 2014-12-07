@@ -1,0 +1,1042 @@
+/*****************************************************************************/
+//
+// Prior to deploying to production, this file will be broken into multiple 
+// files and each will be imported from styles.less.
+//
+// The following files will result from the breakup.
+/* 
+    @import "variables.import.less";
+    @import "mixins.import.less";
+    @import "main.import.less";
+    @import "nav.import.less";
+    @import "header.import.less";
+    @import "footer.import.less";
+    @import "home.import.less";
+  Until then, order the sections of this file in a similar way.
+  Note: All of the 'import' items are not yet represented below.
+*/
+
+
+/*****************************************************************************/
+//
+// Blog styles
+//
+.blog-index, .blog-post {
+  ul.blog-list {
+    margin-left: -40px;
+    list-style-type: none;
+    // list-style-position: outside;
+  }
+  .blog-tags {
+    a {
+      color: @brand-secondary;
+    }
+  }
+  h1 {
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-weight: 300;
+    font-style: italic;
+    a {
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+        color: @brand-secondary;
+      }
+    }
+  }
+  h3 {
+    margin-top:0;
+    font-size: 1.2em;
+    a {
+      color: @brand-secondary;
+      font-weight: 300;
+      &:hover {
+        // color: @brand-primary;
+        text-decoration: underline;
+      }
+    }
+  }
+  p {
+    font-weight: 300;
+    color: @brand-primary;
+  }
+  p.blog-post-body {
+    font-family: @font-family-bodytext;
+    line-height: 1.5em;
+    font-size: 1.6em;
+  }
+}
+
+
+
+/*****************************************************************************/
+
+
+
+/*****************************************************************************/
+//
+/******* @import "variables.less"; *******/
+//
+// Over-ride Bootstrap variables
+
+/*******************************************/
+//
+// Base most site colors off of...
+//
+//    @brand-primary and @brand-secondary
+
+@brand-primary:                            #00503c; // green...was @court-blue
+@brand-secondary:                          #c85a19; // orange...was @court-green
+
+// Used for video playback speed buttons on video detail pages
+
+@brand-success:                            #5cb85c;
+@brand-info:                               #5bc0de;
+@brand-warning:                            #f0ad4e;
+@brand-danger:                             #d9534f;
+
+@brand-background:                         #bfd3ce; // ~7% of @brand-primary
+
+@headings-color:                           @brand-primary;
+
+// Nav bar color settings
+
+@navbar-default-color:                     white; // navbar text
+@navbar-default-bg:                        rgba(0, 80, 60, 0.9); // based on @brand-primary
+@navbar-default-link-color:                white; // link text
+@navbar-default-link-hover-color:          @brand-secondary;
+@navbar-default-link-hover-bg:             @brand-background; 
+@navbar-default-link-active-color:         @brand-secondary;
+@navbar-default-link-active-bg:            @brand-background;
+@navbar-default-toggle-hover-bg:           @brand-primary;
+@navbar-default-border:                    @brand-background;
+
+.navbar-header .navbar-toggle {
+  border: 1px solid @brand-background;
+}
+
+.navbar-header .icon-bar {
+  border: 1px solid @brand-background;
+}
+
+@accounts-forms-background:                #cadad6;
+@accounts-forms-border:                    #7ca49a;
+
+@home-overlay-background-color:            rgba(71, 124, 207,0.6);
+@home-overlay-text-color:                  rgba(252, 154, 124, 1);
+
+/*****************************************************************************/
+//
+// Font families from Google and TypeKit
+//
+//    Google:  Roboto - used for all body text
+//
+//    TypeKit: Brioso Pro - currently only used for the OneHanders logotype
+//
+@font-family-base: "Roboto", sans-serif; // headings and video card text
+@font-family-logo: "cooper-black-std", serif; // logo font
+// @font-family-logo: "Brioso Pro", serif; // logo font
+@font-family-heading: @font-family-logo;
+@font-family-bodytext: "freight-text-pro", serif; // body text for static pages
+
+// The following Typekit fonts were ruled out.
+// Keeping here to remember that they were considered.
+//
+// @font-family-logo: "abril-display", serif; // no
+// @font-family-logo: "kepler-std", serif; // no
+// @font-family-logo: "adage-script", serif; // background-origin: 
+// @font-family-logo: "sorts-mill-goudy", serif; // no
+// @font-family-logo: "Playfair Display", serif; // no
+
+/*******************************************/
+//
+//  Define other variables
+
+@line-height-computed: floor((@font-size-base * @line-height-base) + 2); // ~20px
+
+/*****************************************************************************/
+//
+// HOME PAGE STYLES DURING DEV - move to home.import.less later
+
+#home {
+  img {
+    width: 100%;
+    position: fixed;
+    margin-top: -50px;
+  }
+}
+
+// for sm, md, and lg screens only; hidden on xs
+.brand {
+  margin-left: 30px;
+  // background-color: rgba(0, 0, 0, 0.1);
+  h1 {
+  color: white;
+  font-family: @font-family-logo;
+  font-size: 5em;
+  }
+  p.tagline {
+    font-family: @font-family-base;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 300;
+    margin: -18px 0 0 3px;
+  }
+  p.quote {
+    font-family: @font-family-bodytext;
+    font-size: 1.4em;
+    color: white;
+    padding-top: 35px;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+  p.quote-by {
+    color: white;
+    font-size: 1.1em;
+    margin: -5px 0 30px 325px;
+    font-weight: 300;
+  }
+  p.photo-by {
+    float: left;
+    color: white;
+    font-size: .8em;
+    margin: 40px 50px 30px 0px;
+    font-weight: 300;
+    a {
+      color: white;
+      border-bottom: 1px solid red;
+      &:hover {
+        text-decoration: none;
+        border-bottom: 1px dotted white;
+      }
+    }
+  }
+  p.whyoh {
+    font-family: @font-family-base;
+    font-size: 1.5em;
+    color: white;
+    font-weight: 300;
+    a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid white;
+      &:hover {
+        color: #f23633;
+        border-bottom: 1px dotted white;
+      }
+    }
+  }
+  // home page call to action
+  .home-signup, .home-logout {
+    width: 200px;
+    height: 50px;
+    background-color: #f23633;
+    margin: 45px 0 0 0;
+    &:hover {
+      background-color: #5188d9;
+    }
+    h3 {
+    font-weight: 300;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    }
+  }
+  .already-have-account {
+    margin-top: 40px;
+    p {
+      color: white;
+      font-size: 1.2em;
+      font-weight: 300;
+      a {
+        font-size: 1.5em;
+        color: white; // #f23633;
+        text-decoration: none;
+        border-bottom: 1px solid #f23633; //white;
+        &:hover {
+          color: white;
+          border-bottom: 1px dotted white;
+        }
+      }
+    }
+  }
+}
+
+// for xs screens only; hidden on sm, md, and lg
+.brand-xs {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3%;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin-top: -50px; // 0 0 15px;
+  h1 {
+    margin-top: 0px;
+    color: white;
+    font-family: @font-family-logo;
+    font-size: 3em;
+    font-weight: bold;
+  }
+  p.tagline {
+    font-family: @font-family-base;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 400;
+    margin: -18px 0 0 3px;
+  }
+  p.quote {
+    font-family: @font-family-bodytext;
+    font-size: 1.4em;
+    color: white;
+    padding-top: 20px;
+    font-style: italic;
+    line-height: 1.2em;
+    // letter-spacing: 1px;
+  }
+  p.quote-by {
+    font-family: @font-family-base;      
+    font-style: normal;
+    color: white;
+    font-size: 1.2em;
+    margin: -10px 0 0 150px;
+    font-weight: 300;
+  }
+  p.photo-by {
+    float: right;
+    color: white;
+    font-size: .8em;
+    margin: 25px 50px 30px 0px;
+    font-weight: 300;
+    a {
+      color: white;
+      border-bottom: 1px solid red;
+      &:hover {
+        text-decoration: none;
+        border-bottom: 1px dotted white;
+      }
+    }
+  }
+  
+  p.whyoh {
+    margin-top: 15px;
+    font-family: @font-family-base;
+    font-size: 1.5em;
+    color: white;
+    font-weight: 300;
+    line-height: 1.2em;
+    a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid white;
+      &:hover {
+        color: #f23633;
+        border-bottom: 1px dotted white;
+      }
+    }
+  }
+  // home page call to action
+  .home-signup, .home-logout {
+    width: 200px;
+    height: 50px;
+    background-color: #f23633; // red
+    margin: 30px 0 0 0;
+    &:hover {
+      background-color: #5188d9;  // blue
+    }
+    h3 {
+    font-weight: 300;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    }
+  }
+  .already-have-account {
+    margin-top: 0px;
+    p {
+      color: white;
+      font-size: 1.2em;
+      font-weight: 300;
+      a {
+        font-size: 1.5em;
+        color: white; // #f23633;
+        text-decoration: none;
+        border-bottom: 1px solid #f23633; //white;
+        &:hover {
+          color: white;
+          border-bottom: 1px dotted white;
+        }
+      }
+    }
+  }
+}
+/*****************************************************************************/
+//
+// Page-specific Styles
+//
+//    Favorites
+//    Why Onehanders?
+//    About
+//    Privacy Policy
+//
+.favorites-page {
+  h3 {
+    font-weight: 300;
+  }
+}
+
+.about-page img {
+  width: 128px;
+  float: left;
+  padding: 0 8px 0 0;
+}
+
+.static-page {
+  h1 {
+    margin-left: 15px;
+    font-weight: 300;
+  }
+  .main-column {
+    font-family: @font-family-bodytext;
+    a {
+      text-decoration: underline;
+      &:hover {
+        color: @brand-secondary;
+        text-decoration: none;
+      }
+    }
+    img {
+      margin-top: 10px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.75em;
+      font-weight: 300;
+      color: @brand-secondary;
+    }
+    h3 {
+      font-family: @font-family-base;
+      font-weight: 300;
+      color: @brand-secondary;
+    }
+    p {
+      color: @brand-primary;
+      // color: rgba(0,0,0,0.8);
+      line-height: 1.5em;
+      letter-spacing: 0.01rem;
+      font-size: 1.6em;
+      text-rendering: optimizeLegibility;
+    }
+    ul {
+      color: @brand-primary;
+      margin-left: -5px;
+      list-style-type: circle;
+    }
+    li {
+      padding-bottom: 10px;
+      font-size: 1.5em;
+      font-weight: 300;
+    }
+  }
+}
+span.page-heading {
+  font-family: @font-family-heading;
+  font-style: italic;
+}
+
+/*****************************************************************************/
+//
+/******* @import "mixins.import.less"; *******/
+//
+// Accommodate the fixed topnav bar...stays in place when scrolling
+
+body { 
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background-color: @brand-background;
+  // background-color: white;
+}
+
+/*****************************************************************************/
+//
+/******* @import "nav.import.less"; *******/
+//
+// Override the navbar hover style for the brand
+
+.navbar-default .navbar-brand {
+  &:hover {
+    color: @brand-secondary;
+    background-color: @navbar-default-link-active-bg;
+  }
+}
+ul.navbar-right li a.account-login, ul.navbar-right li a.account-signup, li a.account-logout {
+  margin: 0 10px;
+}
+a.homelink {
+  text-decoration: underline;
+}
+
+#logotype {
+  font-family: @font-family-logo;
+  font-size: 2em;
+}
+
+.navbar li {
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+/*****************************************************************************/
+//
+/******* @import "footer.import.less"; *******/
+
+// footer {
+//   #footer-nav {
+//     height: 20px;
+//     a {
+//       color: rgba(0, 80, 60, 0.8);
+//     }
+//     background-color: @brand-background; //rgba(0, 80, 60, 0.6);;
+//   }
+//   .hidden-xs;
+//   p {
+//     margin-top: @navbar-margin-bottom;
+//     color: @navbar-default-link-color;
+//   }
+//   a {
+//     padding: (@navbar-padding-vertical + 10) @navbar-padding-horizontal;
+//     color: @navbar-default-link-color;
+//     &:hover {
+//       color: @navbar-default-link-hover-color;
+//       text-decoration: none;
+//       background-color: @navbar-default-link-active-bg;
+//     }
+//   }
+// }
+
+/******* Styles that don't fit into any of the proposed 'import' files *******/
+
+/*****************************************************************************/
+//
+// Video card layout and all its components
+//
+//  Includes:
+//    - video card layout
+//    - metadata layout on the card
+//    - video thumbnail, title, video duration, etc.
+//
+.video-card-wrap {
+  margin-left: -15px;
+  @media (min-width: 768px) {  // @screen-sm-min
+    margin-left: 0;
+  }
+}
+.lesson-video-card {
+  width: 320px;
+  height: 345px;
+  margin-bottom: 10px;
+  // border-bottom: 4px solid @brand-primary;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+
+  @media (min-width: 768px) {  // @screen-sm-min
+    width: 260px;
+    height: 312px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: @grid-gutter-width;
+    .border-bottom-radius(@border-radius-base);
+    .border-top-radius(@border-radius-base);
+  }
+}
+.playing-pro-video-card {
+  width: 320px;
+  height: 330px;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  // border-bottom: 4px solid @brand-primary;
+
+  @media (min-width: 768px) { // @screen-sm-min)
+    width: 260px;
+    height: 295px;
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: @grid-gutter-width;
+    .border-bottom-radius(@border-radius-base);
+    .border-top-radius(@border-radius-base);
+  }
+}
+
+.lesson-video-card, .playing-pro-video-card {
+  .center-block();
+   background-color: #fff;
+   // border: solid 1px rgba(0, 80, 60, 0.4);
+  padding: 0 0 10px 0;
+  // margin-bottom: @grid-gutter-width;
+  img { 
+    max-width: 100%;
+  }
+  p.video-title {
+    height: 65px;
+    padding: 5px 8px;
+    margin-bottom: 0;
+    font-size: @font-size-base;
+     line-height: 1.3em;
+    a {
+      color: @brand-primary;
+      text-decoration: none;
+    }
+    a:hover {
+      color: @brand-secondary;
+      text-decoration: underline;
+    } 
+  }
+  p.info-left {
+    padding-left: 8px;
+    margin: 0;
+    font-size: @font-size-base * 0.85;
+    color: @brand-primary;
+    a {
+      padding: 5px 0;
+      text-decoration: none;
+      color: @brand-secondary;
+    }
+    a:hover {
+      border-bottom: 0;
+      color: @brand-primary;
+      text-decoration: underline;
+    } 
+  }
+  p.info-right {
+    margin: 0 8px 0 0;
+    font-size: @font-size-base * 0.85;
+    color: @brand-primary;
+    .text-right;
+  }
+  p.favorite-icon, p.watched-status {
+    color: @brand-secondary;
+    &:hover {
+      cursor: pointer;
+      color: @brand-primary;
+    }    
+  }
+  p.watched-status {
+    color: Silver;
+    font-weight: 100;
+  }
+  .tournament-name {
+    height: 18px;
+  }
+  .tag-list { 
+    list-style-type: none;
+    height: 36px;
+    padding: 0 8px;
+    margin: 0;
+    font-size: @font-size-base * 0.85;
+    color: @brand-primary;
+  }
+  .tag-list li {
+    display: inline;
+    a {
+      padding: 10px 0;
+      text-decoration: none;
+      color: @brand-secondary;
+    }
+    a:hover {
+      border-bottom: 0;
+      color: @brand-primary;
+      text-decoration: underline;
+    } 
+  }
+  .tag-list li:after {
+    content: ", "
+  }
+  .tag-list li:first-child:after {
+    content: ""
+  }
+  .tag-list li:last-child:after {
+    content: ""
+  }
+  .videoThumbWrap {
+    position: relative;
+    &:hover img.youtube-icon {
+      opacity: .9;
+    }
+    img.youtube-icon {
+      width: 40px;
+      position: absolute;
+      top: 59px; 
+      left: 110px;
+      width: 56px;
+      position: absolute;
+      top:50px; 
+      left:103px;
+      opacity: 0;
+      -webkit-transition: opacity 500ms;
+      -moz-transition: opacity 500ms;
+      -o-transition: opacity 500ms;
+      transition: opacity 500ms;
+      .hidden-xs; // don't show hover youtube play icon on phones
+    }
+  }
+  hr {
+    margin: 5px 8px;
+    border-top-width: 1px;
+    border-top-color: #ddd;
+  }
+}
+
+/*****************************************************************************/
+//
+// Video filter area and enclosed filter buttons
+
+.video-filters-wrap {
+  position: relative;
+}
+
+.video-filters {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 99;
+  padding: 0 10px 10px 10px;
+  .border-bottom-radius(@border-radius-base);
+  .border-top-radius(@border-radius-base);
+  background-color: @brand-secondary;
+  opacity: .95;
+  a {
+    color: rgba(0, 80, 60, 0.75);
+    background-color: white;
+    text-decoration: none;
+    &:hover {
+      color: white;
+      background-color: @brand-primary;
+    }
+  }
+  .active {
+    text-decoration: none;
+    color: white;
+    background-color: @brand-primary;
+    // border: 1px solid silver;
+  }
+  h4 {
+    margin: 5px 0 5px 0;
+    color: white;
+  }
+  .video-filter-btn {
+    display: inline-block;
+    padding: 3px 8px;
+    margin: 0 3px 8px 0;
+    border-radius: @border-radius-base * 5;
+  }
+  .filter-count {
+    font-size: @font-size-base * 0.9;
+  }
+  .all-lessons, .all-playing-pro-videos {
+    margin-top: 10px;
+  }
+}
+
+/*******************************************/
+//
+// Button styles:
+//
+//   - Main video filter button
+//   - Filter panel & items in the panel
+//   - Index page footer buttons
+//   - Home page call to action
+//
+// Includes button styles for buttons at foot of index pages as wel as
+// home page call to action button.
+//
+
+// status/show/hide of the filters & index page footer buttons
+
+.video-filter-status, .video-index-footer-button, .home-signup, .home-logout, #sign-up-today {
+  height: 40px;
+  display: table;
+  margin: 10px 15px 10px 15px;
+  text-align: center;
+  border-radius: @border-radius-base * 3;
+  background-color: @brand-secondary;
+  &:hover {
+    cursor: pointer;
+    background-color: @brand-primary;
+  }
+  h4 {
+    padding: 0;
+    color: white;
+    display: table-cell;
+    vertical-align: middle;
+    font-weight: 300;
+  }
+}
+#sign-up-today {
+  margin: 0 auto 10px auto;
+  a {
+    color: white;
+  }
+  h4 {
+    padding: 0 10px;
+    font-weight: normal;
+  }
+}
+
+// pagination buttons for video index pages
+.pagination-buttons {
+  margin-left: 0;
+}
+
+/*******************************************/
+//
+// Buttons to load more videos or scroll 
+// back to the top of an index page
+
+.video-index-footer-button {
+  float: left;
+  margin: 0 15px 20px 0; 
+  padding: 0 15px;
+  h5 {
+    font-weight: 300;
+    color: white;
+  }
+}
+#load-remaining {
+  .hidden-xs;
+}
+
+// use in helpers to "show" buttons when appropriate
+.show-inline {
+  display: inline;
+}
+
+/*****************************************************************************/
+//
+// Sidebar styles
+//
+//  - 
+//  - recently-watched: for logged in user, list of recently watched videos (as links)
+//  - compel-to-join: user not logged in; motivational info to create an account
+//  - index-sidebar: for logged in user that has not watched any videos
+
+.sidebar {
+  background-color: @accounts-forms-background;
+  border: 1px dotted @accounts-forms-border;
+  .border-top-radius(@border-radius-base);
+  .border-bottom-radius(@border-radius-base);
+  margin-bottom: 30px;
+  font-weight: 300;
+  
+  .recently-watched, .compel-to-join, .sidebar-other, .suggested-reading {
+    // margin-bottom: 30px;
+    h4, p {
+      padding-left: 12px;
+      color: @brand-secondary;
+      font-weight: 300;
+    }
+    ul {
+      padding: 0 0 5px 0;
+      list-style: none;
+      font-size: @font-size-base;
+      li {
+        padding: 0 12px;
+        margin-bottom: 10px;
+      }
+    }
+    a {
+      color: @brand-primary;
+      &:hover {
+        color: @brand-secondary;
+      }
+    }
+  }
+  .suggested-reading {
+    h3 {
+      margin: 0 0 5px 12px;
+      padding-top: 10px;
+      font-size: 1.2em;
+      font-weight: 300;
+    }
+    ul {
+      margin-bottom: 0;
+      li {
+        margin-bottom: 0;
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+    p {
+      padding-right: 15px;
+      font-style: italic;
+      font-weight: 300;
+    }
+  }
+  .compel-to-join{
+    .border-top-radius(@border-radius-base);
+    .border-bottom-radius(@border-radius-base);
+    padding: 5px 0;
+    background-color: white;
+    // border: 1px solid @accounts-forms-border;
+    cursor: pointer;
+    text-align: center;
+    h4 {
+      padding: 0;
+      font-weight: bold;
+      a {
+        color: @brand-secondary;
+        text-decoration: none;
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+    }
+    p {
+      padding: 0;
+      color: @brand-primary;
+      a {
+        color: @brand-primary;
+        border-bottom: 1px solid @brand-secondary;
+        &:hover {
+          color: @brand-secondary;
+          border-bottom: 1px solid @brand-secondary;
+          text-decoration: none;
+        }
+      }
+    }
+    span {
+      border-bottom: 1px solid @brand-secondary;
+    }
+  }
+  .sidebar-other {
+    p {
+      padding: 12px 12px 0 12px;
+    }
+  }
+}
+
+/*****************************************************************************/
+//
+// Lesson Video Detail styles for all video detail pages
+//
+.video-detail-title {
+  h3 {
+    margin: 10px 0;
+  }
+}
+
+/*******************************************/
+//
+// Make the video player responsive to 
+// the browser window size.
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    height: 0;
+    overflow: hidden;
+}
+.video-wrapper iframe,
+.video-wrapper object,
+.video-wrapper embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-controls {
+  .play-pause-button {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: @brand-primary;
+  }
+  hr {
+    margin: 20px 0 10px 0;
+    border-top-width: 1px;
+    border-top-color: #ddd;
+  }
+
+  .speed-buttons {
+    display: none;
+    width: 100%;
+    margin-bottom: 10px;
+    color: white;
+  }
+}
+
+/*******************************************/
+//
+// Metadata displayed alongside the video
+
+.video-metadata {
+  margin-bottom: 10px;
+  color: @brand-primary;
+  a {
+      text-decoration: none;
+      color: @brand-secondary;
+    }
+    a:hover {
+      color: @brand-primary;
+      text-decoration: underline;
+    }
+  ul {
+    list-style-type: none;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    font-size: @font-size-base;
+    color: @brand-primary;
+  }
+  ul li {
+    display: inline;
+  }
+  ul li:after {
+    content: ", "
+  }
+  ul li:first-child:after {
+    content: ""
+  }
+  ul li:last-child:after {
+    content: ""
+  }
+  p.favorite-icon, p.watched-status {
+    margin: 0 0 10px 0;
+    color: @brand-secondary;
+    &:hover {
+      cursor: pointer;
+      color: @brand-primary;
+    }    
+  }
+}
+
+/*******************************************/
+//
+// Disqus comment section for the video
+
+.video-detail-disqus, .blog-post-disqus {
+  margin-left: 15px;
+  padding-right: 38px;
+  p {
+    color: @brand-primary;
+    // color: rgba(0,0,0,0.8);
+    line-height: 1.5em;
+    letter-spacing: 0.01rem;
+    font-size: 1em;
+    font-style: italic;
+    text-rendering: optimizeLegibility;
+  }
+  a {
+    color: @brand-secondary;
+    text-decoration: underline;
+  }
+  .modal-body p {
+    font-style: normal;
+  }
+}
